@@ -1,0 +1,5 @@
+<launch>
+  <!-- <node pkg="turtlebot3_gazebo" type="turtlebot3_gazebo_rviz.launch" name="turtlebot3_gazebo_rviz_node"/> -->
+  <!-- <node pkg="turtlebot3_gazebo" type="turtlebot3_stage_1.launch"     name="turtlebot3_stage_1_node"/> -->
+  <node pkg="turtlebot3_teleop" type="turtlebot3_teleop_key"         name="turtlebot3_teleop_keyboard_node" output="screen"/>
+</launch>
