@@ -58,10 +58,6 @@ find_package(catkin REQUIRED COMPONENTS
    Range_90.msg
    Range_180.msg
    Range_270.msg
-   Mean_Range_0.msg
-   Mean_Range_90.msg
-   Mean_Range_180.msg
-   Mean_Range_270.msg
 #   Message2.msg
  )
 

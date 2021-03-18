@@ -2,3 +2,5 @@
 float32[] Lidar_Range_Values_At_0
 # Lidar value at 0°
 float32   Lidar_Value_At_0
+# mean of range
+float32   Mean

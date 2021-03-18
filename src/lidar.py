@@ -20,7 +20,7 @@ class Lidar_Sensor():
         twisted_list = temp1 + temp2
         lidar_obj.Values_0.Lidar_Range_Values_At_0 = twisted_list
         lidar_obj.Values_0.Lidar_Value_At_0 = statistics.median(lidar_obj.Values_0.Lidar_Range_Values_At_0)
-        lidar_obj.Mean_Range_0.Mean = self.calc_mean_of_range(lidar_obj.Values_0.Lidar_Range_Values_At_0)
+        lidar_obj.Values_0.Mean = self.calc_mean_of_range(lidar_obj.Values_0.Lidar_Range_Values_At_0)
 
         temp1 = list(msg.ranges[90 : 101])
         temp1 = list(msg.ranges[80 : 90])
@@ -29,7 +29,7 @@ class Lidar_Sensor():
         twisted_list = temp1 + temp2
         lidar_obj.Values_90.Lidar_Range_Values_At_90 = twisted_list
         lidar_obj.Values_90.Lidar_Value_At_90 = statistics.median(lidar_obj.Values_90.Lidar_Range_Values_At_90)
-        lidar_obj.Mean_Range_90.Mean = self.calc_mean_of_range(lidar_obj.Values_90.Lidar_Range_Values_At_90)
+        lidar_obj.Values_90.Mean = self.calc_mean_of_range(lidar_obj.Values_90.Lidar_Range_Values_At_90)
 
         temp1 = list(msg.ranges[180 : 191])
         temp1 = list(msg.ranges[170 : 180])
@@ -38,7 +38,7 @@ class Lidar_Sensor():
         twisted_list = temp1 + temp2
         lidar_obj.Values_180.Lidar_Range_Values_At_180 = twisted_list
         lidar_obj.Values_180.Lidar_Value_At_180 = statistics.median(lidar_obj.Values_180.Lidar_Range_Values_At_180)
-        lidar_obj.Mean_Range_180.Mean = self.calc_mean_of_range(lidar_obj.Values_180.Lidar_Range_Values_At_180)
+        lidar_obj.Values_180.Mean = self.calc_mean_of_range(lidar_obj.Values_180.Lidar_Range_Values_At_180)
 
         temp1 = list(msg.ranges[270 : 281])
         temp1 = list(msg.ranges[260 : 270])
@@ -47,7 +47,7 @@ class Lidar_Sensor():
         twisted_list = temp1 + temp2
         lidar_obj.Values_270.Lidar_Range_Values_At_270 = twisted_list
         lidar_obj.Values_270.Lidar_Value_At_270 = statistics.median(lidar_obj.Values_270.Lidar_Range_Values_At_270)
-        lidar_obj.Mean_Range_270.Mean = self.calc_mean_of_range(lidar_obj.Values_270.Lidar_Range_Values_At_270)
+        lidar_obj.Values_270.Mean = self.calc_mean_of_range(lidar_obj.Values_270.Lidar_Range_Values_At_270)
 
 
     def calc_mean_of_range(self, range_values):
