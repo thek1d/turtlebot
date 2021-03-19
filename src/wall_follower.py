@@ -121,7 +121,7 @@ def lidar_cb(msg, wf):
     wf.lidar_values = msg
 
 if __name__ == '__main__':
-    rospy.init_node('statemachine_node')
+    rospy.init_node('wall_follower_node')
     wall_follower = WFMachine()
     rospy.Subscriber('/lidar_values', Lidar, callback=lidar_cb, callback_args=wall_follower)
 
