@@ -52,10 +52,6 @@ class WFMachine():
     def lidar_values(self, ld):
         self.__lidar = ld
     
-    def __drive(self):
-        self.__twist.linear.x = 0.1
-        self.publish(self.__twist)
-
     def __find_wall(self):
         self.__twist.linear.x = 0.1
         self.__twist.angular.z = 0.01
@@ -67,10 +63,6 @@ class WFMachine():
 
     def __follow_wall(self):
         self.__twist.linear.x = 0.1
-        self.__twist.linear.y = 0.0
-        self.__twist.linear.z = 0.0
-        self.__twist.angular.x = 0.0
-        self.__twist.angular.y = 0.0
         self.__twist.angular.z = 0.0
         self.publish(self.__twist)
     
