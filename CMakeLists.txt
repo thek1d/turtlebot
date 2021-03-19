@@ -54,10 +54,7 @@ find_package(catkin REQUIRED COMPONENTS
  add_message_files(
    FILES
    Lidar.msg
-   Range_0.msg
-   Range_90.msg
-   Range_180.msg
-   Range_270.msg
+   Range.msg
 #   Message2.msg
  )
 
@@ -172,9 +169,8 @@ include_directories(
 ## in contrast to setup.py, you can choose the destination
  catkin_install_python(PROGRAMS
 #   scripts/my_python_script
-   src/fsm.py
    src/lidar.py
-   src/wallfollower.py
+   src/wall_follower.py
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
  )
 

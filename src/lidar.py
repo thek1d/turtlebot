@@ -8,54 +8,43 @@ from package_turtlebot_ogu.msg import Lidar
 
 class Lidar_Sensor():
 
-    def __init__(self):
-        pass
-    
+    range_max = 3.5
+
+    temp1 = temp2 = list()
     def process_lidar_values(self, msg, lidar_obj):
-        temp1 = list(msg.ranges[0:11])
-        temp2 = list(msg.ranges[350:360])
-        ''' setting 0° to the middle of the list, median is by elem 10 '''
-        temp1.reverse()
-        temp2.reverse()
-        twisted_list = temp1 + temp2
-        lidar_obj.Values_0.Lidar_Range_Values_At_0 = twisted_list
-        lidar_obj.Values_0.Lidar_Value_At_0 = statistics.median(lidar_obj.Values_0.Lidar_Range_Values_At_0)
-        lidar_obj.Values_0.Mean = self.calc_mean_of_range(lidar_obj.Values_0.Lidar_Range_Values_At_0)
+        ''' for details see http://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/LaserScan.html '''
+        temp1 = list(msg.ranges[0:18])
+        temp2 = list(msg.ranges[344:359])
 
-        temp1 = list(msg.ranges[90 : 101])
-        temp1 = list(msg.ranges[80 : 90])
-        temp1.reverse()
-        temp2.reverse()
-        twisted_list = temp1 + temp2
-        lidar_obj.Values_90.Lidar_Range_Values_At_90 = twisted_list
-        lidar_obj.Values_90.Lidar_Value_At_90 = statistics.median(lidar_obj.Values_90.Lidar_Range_Values_At_90)
-        lidar_obj.Values_90.Mean = self.calc_mean_of_range(lidar_obj.Values_90.Lidar_Range_Values_At_90)
+        lidar_obj.Front.Range_Values = temp2 + temp1
+        ''' check if smallest value of sensor < max range of sensor '''
+        lidar_obj.Front.Value       = min(min(lidar_obj.Front.Range_Values), Lidar_Sensor.range_max)
+        lidar_obj.Front.Mean         = self.calc_mean(lidar_obj.Front.Range_Values)
 
-        temp1 = list(msg.ranges[180 : 191])
-        temp1 = list(msg.ranges[170 : 180])
-        temp1.reverse()
-        temp2.reverse()
-        twisted_list = temp1 + temp2
-        lidar_obj.Values_180.Lidar_Range_Values_At_180 = twisted_list
-        lidar_obj.Values_180.Lidar_Value_At_180 = statistics.median(lidar_obj.Values_180.Lidar_Range_Values_At_180)
-        lidar_obj.Values_180.Mean = self.calc_mean_of_range(lidar_obj.Values_180.Lidar_Range_Values_At_180)
+        lidar_obj.Front_Left.Range_Values = list(msg.ranges[19:55])
+        lidar_obj.Front_Left.Value        = min(min(lidar_obj.Front_Left.Range_Values), Lidar_Sensor.range_max)
+        lidar_obj.Front_Left.Mean         = self.calc_mean(lidar_obj.Front_Left.Range_Values)
 
-        temp1 = list(msg.ranges[270 : 281])
-        temp1 = list(msg.ranges[260 : 270])
-        temp1.reverse()
-        temp2.reverse()
-        twisted_list = temp1 + temp2
-        lidar_obj.Values_270.Lidar_Range_Values_At_270 = twisted_list
-        lidar_obj.Values_270.Lidar_Value_At_270 = statistics.median(lidar_obj.Values_270.Lidar_Range_Values_At_270)
-        lidar_obj.Values_270.Mean = self.calc_mean_of_range(lidar_obj.Values_270.Lidar_Range_Values_At_270)
+        lidar_obj.Left.Range_Values = list(msg.ranges[56:92])
+        lidar_obj.Left.Value        = min(min(lidar_obj.Left.Range_Values), Lidar_Sensor.range_max)
+        lidar_obj.Left.Mean         = self.calc_mean(lidar_obj.Left.Range_Values)
 
+        lidar_obj.Right.Range_Values = list(msg.ranges[270:306])
+        lidar_obj.Right.Value        = min(min(lidar_obj.Right.Range_Values), Lidar_Sensor.range_max)
+        lidar_obj.Right.Mean         = self.calc_mean(lidar_obj.Right.Range_Values)
 
-    def calc_mean_of_range(self, range_values):
-        temp = -1.0
+        lidar_obj.Front_Right.Range_Values = list(msg.ranges[307:343])
+        lidar_obj.Front_Right.Value        = min(min(lidar_obj.Front_Right.Range_Values), Lidar_Sensor.range_max)
+        lidar_obj.Front_Right.Mean         = self.calc_mean(lidar_obj.Front_Right.Range_Values)
+
+    
+
+    def calc_mean(self, range_values):
+        temp = 0.0
         for i in range_values:
             temp = temp + i
-        return temp/len(range_values)
-
+        return i / len(range_values)
+    
 def main():
     rospy.init_node('lidar_node')
     lidar_sensor = Lidar_Sensor()
