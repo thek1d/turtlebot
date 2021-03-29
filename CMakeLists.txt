@@ -171,6 +171,7 @@ include_directories(
 #   scripts/my_python_script
    src/lidar.py
    src/wall_follower.py
+   src/drive_2_cylinder.py
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
  )
 

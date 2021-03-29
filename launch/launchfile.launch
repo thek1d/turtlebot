@@ -3,4 +3,8 @@
   <!-- <node pkg="package_turtlebot_ogu" type="fsm.py"                    name="state_machine_node" output="screen"/> -->
   <!-- <node pkg="package_turtlebot_ogu" type="lidar.py"                  name="lidar_node" /> -->
   <!-- <node pkg="turtlebot3_teleop"     type="turtlebot3_teleop_key"     name="turtlebot3_teleop_keyboard_node" output="screen"/> -->
+
+  <!-- <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_cylinder" value="$(find World_Cylinder)/launch(Wo"/>
+  </include> -->
 </launch>
