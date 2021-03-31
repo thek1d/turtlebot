@@ -1,0 +1,3 @@
+<launch>
+<node pkg="package_turtlebot_ogu" name="drive2cylinder_node" type="drive_2_cylinder.py" output="screen"/>
+</launch>

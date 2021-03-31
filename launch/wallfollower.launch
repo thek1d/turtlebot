@@ -1,0 +1,4 @@
+<launch>
+<node pkg="package_turtlebot_ogu"         type="lidar.py"            name="lidar_node"/>
+<node pkg="package_turtlebot_ogu"         type="wall_follower.py"    name="wallfollower_node" output="screen"/>
+</launch>
